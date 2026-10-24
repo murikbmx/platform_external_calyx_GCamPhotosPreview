@@ -1,0 +1,26 @@
+//
+// SPDX-FileCopyrightText: 2026 The LineageOS Project
+// SPDX-License-Identifier: Apache-2.0
+//
+
+android_app {
+    name: "GCamPhotosPreview",
+
+    srcs: [
+        "app/src/main/java/**/*.kt",
+        "soong/java/**/*.kt",
+    ],
+    resource_dirs: ["app/src/main/res"],
+    manifest: "app/src/main/AndroidManifest.xml",
+
+    sdk_version: "current",
+    min_sdk_version: "35",
+    product_specific: true,
+
+    // Same package name as Google Photos, must not be installed alongside it
+    overrides: ["Photos"],
+
+    optimize: {
+        proguard_flags_files: ["app/proguard-rules.pro"],
+    },
+}
